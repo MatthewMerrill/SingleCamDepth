@@ -1,0 +1,47 @@
+package nasathing.singlecamdepth.api;
+
+import java.util.Iterator;
+
+public class PixelCompareIterator implements Iterator<Double> {
+
+	private SCDColor[][] matrix = null;
+	
+	private int curRowPos = 0;
+	private int rows;
+	
+	private int curColPos = 0;
+	private int cols;
+	//private int[] colPosCount;
+	
+	//private int count = 0;
+	
+	public PixelCompareIterator(SCDColor[][] matrix) {
+		this.matrix = matrix;
+		
+		this.curRowPos = 0;
+		this.curColPos = 0;
+		
+		this.rows = matrix.length;
+		
+		if (matrix.length >= 1)
+			this.cols = matrix[0].length;
+		
+		for (int i = 0; i < matrix.length; i++) {
+			SCDColor[] cur = matrix[i];
+			if (cur.length != cols)
+				ISingleCam.logError("Region's Rows are Not Same Length!");
+		}
+	}
+	
+	@Override
+	public boolean hasNext() {
+		return this.curRowPos >= rows || this.curColPos >= cols;
+	}
+
+	@Override
+	public Double next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

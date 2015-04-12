@@ -1,0 +1,122 @@
+package nasathing.singlecamdepth.android;
+
+import java.util.Arrays;
+
+import nasathing.singlecamdepth.api.ISingleCam;
+import nasathing.singlecamdepth.api.ImageFrame;
+import nasathing.singlecamdepth.api.SingleCamDepth;
+import android.content.Context;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraDevice.StateCallback;
+import android.hardware.camera2.CameraManager;
+import android.os.Handler;
+
+public class AndroidSingleCam implements ISingleCam {
+
+	MainActivity mainActivity;
+	CameraManager manager;
+	
+	private int cameraId = 0;
+	private float desiredAperture;
+	private float desiredFocalLength;
+	
+	private CameraDevice cameraDevice = null;
+	
+	public AndroidSingleCam(MainActivity mainActivity) {
+		this.mainActivity = mainActivity;
+		manager = (CameraManager) mainActivity.getSystemService(Context.CAMERA_SERVICE);
+	}
+
+	@Override
+	public boolean prepare() {
+		Handler handler = new Handler();
+		try {
+			manager.openCamera(manager.getCameraIdList()[cameraId], callback, handler);
+			return true;
+		} catch (CameraAccessException e) {
+			SingleCamDepth.out.logError("Couldn't prepare camera.");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public void setSelectedCamera(int id) throws CameraAccessException {
+		if ((id >= 0) && (id < manager.getCameraIdList().length))
+			cameraId = id;
+	}
+
+	public final float[] availableApertures() throws CameraAccessException {
+		CameraCharacteristics cc = manager.getCameraCharacteristics(manager.getCameraIdList()[cameraId]);
+		return cc.get(CameraCharacteristics.LENS_INFO_AVAILABLE_APERTURES);
+	}
+	
+	public final float[] availableFocalLengths() throws CameraAccessException {
+		CameraCharacteristics cc = manager.getCameraCharacteristics(manager.getCameraIdList()[cameraId]);
+		return cc.get(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS);
+	}
+	
+	@Override
+	public void setAperature(float value) {
+		try {
+			float[] apertures;
+			apertures = availableApertures();
+
+			if (Arrays.asList(apertures).contains(value)) {
+				this.desiredAperture = value;
+			}
+			
+		} catch (CameraAccessException e) {
+			SingleCamDepth.out.logError("Couldn't receive list of available aperture settings.");
+		}
+	}
+
+	@Override
+	public void setFocalLength(float value) {
+		try {
+			float[] focalLengths;
+			focalLengths = availableFocalLengths();
+
+			if (Arrays.asList(focalLengths).contains(value)) {
+				this.desiredFocalLength = value;
+			}
+			
+		} catch (CameraAccessException e) {
+			SingleCamDepth.out.logError("Couldn't receive list of available focal length settings.");
+		}
+	}
+
+	@Override
+	public ImageFrame getOutput() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void logError(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private StateCallback callback = new StateCallback(){
+
+		@Override
+		public void onOpened(CameraDevice camera) {
+			cameraDevice = camera;
+			mainActivity.cameraOpened();
+		}
+
+		@Override
+		public void onDisconnected(CameraDevice camera) {
+			cameraDevice = null;
+			mainActivity.cameraClosed();
+		}
+
+		@Override
+		public void onError(CameraDevice camera, int error) {
+			cameraDevice.close();
+		}};
+	
+
+}

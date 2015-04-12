@@ -1,0 +1,13 @@
+package nasathing.singlecamdepth.android;
+
+public class AndroidSingleCam implements ISingleCam {
+
+	MainActivity mainActivity;
+	
+	public AndroidSingleCam(MainActivity mainActivity) {
+		this.mainActivity = mainActivity;
+	}
+	
+	
+
+}

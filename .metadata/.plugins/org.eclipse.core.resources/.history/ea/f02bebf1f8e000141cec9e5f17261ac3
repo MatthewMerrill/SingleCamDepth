@@ -1,0 +1,6 @@
+package nasathing.singlecamdepth.api;
+
+public interface ImageFrame {
+	
+
+}

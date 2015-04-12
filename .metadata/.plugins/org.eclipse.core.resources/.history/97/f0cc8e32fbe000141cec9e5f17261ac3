@@ -1,0 +1,20 @@
+package nasathing.singlecamdepth.api;
+
+public class ImageRegion {
+	
+	private SCDColor[][] matrix = null;
+	
+	public ImageRegion(SCDColor[][] matrix) {
+		this.matrix = matrix;
+	}
+	
+	public double getPixelVariance() {
+		//TODO: THIS
+		return 0;
+	}
+	
+	public SCDColor[][] getMatrix() {
+		return matrix;
+	}
+
+}

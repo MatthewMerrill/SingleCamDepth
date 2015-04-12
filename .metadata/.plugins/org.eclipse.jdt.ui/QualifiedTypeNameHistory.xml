@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.api.OutputModule"/>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.android.MainActivity"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.android.R.string"/>
+<fullyQualifiedTypeName name="java.util.logging.Level"/>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.api.ISingleCam"/>
+<fullyQualifiedTypeName name="android.hardware.Camera.CameraInfo"/>
+<fullyQualifiedTypeName name="android.inputmethodservice.Keyboard.Key"/>
+<fullyQualifiedTypeName name="android.hardware.Camera"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.api.SingleCamDepth"/>
+<fullyQualifiedTypeName name="android.hardware.camera2.CameraDevice.StateCallback"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="nasathing.singlecamdepth.android.R.id"/>
+</qualifiedTypeNameHistroy>

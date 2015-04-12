@@ -1,0 +1,13 @@
+package nasathing.singlecamdepth.api;
+
+public interface ImageFrame {
+	
+	public double getRegionScore();
+	
+	public SCDColor[][] getMatrix();
+	public ImageRegion getRegion(int row, int column);
+	
+	public int getRegionColumns();
+	public int getRegionRows();
+
+}

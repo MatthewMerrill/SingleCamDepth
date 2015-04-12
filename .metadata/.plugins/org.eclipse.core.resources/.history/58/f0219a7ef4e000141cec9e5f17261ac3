@@ -1,0 +1,23 @@
+package nasathing.singlecamdepth.api;
+
+public interface ICameraSettings {
+	
+	/**
+	 * aperature size
+	 * @param f
+	 */
+	public void setAperatureSize(float f);
+	
+	/**
+	 * how long shutter is open
+	 * @param f
+	 */
+	public void setShutterSpeed(float f);
+	
+	/**
+	 * +-
+	 * @param f
+	 */
+	public void setExposureAdj(float f);
+
+}

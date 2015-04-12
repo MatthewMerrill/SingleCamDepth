@@ -1,0 +1,12 @@
+package nasathing.singlecamdepth.api;
+
+import java.awt.Color;
+
+
+
+public class FocusCompare {
+	
+	
+ public void test(){
+ }
+}

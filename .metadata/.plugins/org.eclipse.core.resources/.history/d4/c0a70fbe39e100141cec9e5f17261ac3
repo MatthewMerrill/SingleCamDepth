@@ -1,0 +1,31 @@
+package nasathing.singlecamdepth.android;
+
+import nasathing.singlecamdepth.api.OutputModule;
+
+public class AndroidOutputModule implements OutputModule {
+
+	@Override
+	public void logInfo(String info) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logDebug(String debug) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logWarning(String warning) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void logError(String error) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

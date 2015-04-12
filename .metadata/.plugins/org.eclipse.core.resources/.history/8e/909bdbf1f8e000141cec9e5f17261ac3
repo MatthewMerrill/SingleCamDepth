@@ -1,0 +1,7 @@
+package nasathing.singlecamdepth.api;
+
+import java.util.Iterator;
+
+public class PixelCompareIterator implements Iterator<E> {
+
+}
